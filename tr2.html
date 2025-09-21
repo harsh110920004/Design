@@ -1,0 +1,244 @@
+<<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sec C + Cot A Solver</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      padding: 20px;
+      color: #333;
+      font-size: 27px;
+      font-weight: bold;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      gap: 60px;
+      max-width: 1200px;
+    }
+
+    .triangle-diagram {
+      position: relative;
+      width: 240px;
+      height: 140px;
+      margin: 40px auto;
+    }
+
+    .side.ab {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      height: 140px;
+      background: #2c3e50;
+    }
+
+    .side.bc {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 240px;
+      height: 4px;
+      background: #2c3e50;
+    }
+
+    .side-ac-line {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .label {
+      position: absolute;
+      font-weight: bold;
+      background: white;
+      padding: 4px 10px;
+      border-radius: 8px;
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+      color: black;
+      font-size: 20px;
+    }
+
+    .point-a { top: -20px; left: -15px; background-color: #ED8392; }
+    .point-b { bottom: -25px; left: -15px; background-color: #7BC3EC; }
+    .point-c { bottom: -25px; right: -15px; background-color: #B7F3F0; }
+
+    .dimension {
+      position: absolute;
+      background: white;
+      padding: 4px 10px;
+      border-radius: 10px;
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .ab-label { left: -40px; top: 45px; background: linear-gradient(to top, #F5FAFF, #3399FF); }
+    .bc-label { bottom: -35px; left: 90px; background: linear-gradient(to top, #F9FAD6, #F3DDFF); }
+    .ac-label { top: 40px; right: 90px; background: linear-gradient(to top, #F3DDFF, #FEB78A); }
+
+    .formula-table {
+      background: #2c3e50;
+      color: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .explanation-box-1 {
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      gap: 20px;
+      background: #f9f9f9;
+    }
+
+    .math-box {
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin: 10px 0;
+      font-weight: bold;
+      display: inline-block;
+      text-align: center;
+      background: white;
+    }
+
+    .fraction { display: flex; flex-direction: column; align-items: center; }
+    .line-by { width: 40px; height: 3px; background: #555; margin: 4px 0; }
+    .linel-by { width: 140px; height: 3px; background: white; margin: 4px 0; }
+    .fraction-container { display: flex; align-items: center; justify-content: left; gap: 8px; }
+
+    .answer-box {
+      font-size: 30px;
+      background: linear-gradient(to right, #1BAD83, #0D8E6E);
+      color: white;
+      padding: 8px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-left: 10px;
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    }
+    .formulaBoxUltimate {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 15px;
+    }
+    .pythagorean-info { text-align: center; margin: 10px 0; font-weight: bold; color: #2c3e50; font-size: 24px; }
+    .header { text-align: center; color: white; margin-bottom: 20px; font-size: 36px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+    .section-title { font-size: 24px; color: #2c3e50; margin-bottom: 15px; text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <div class="section-title">Step-by-Step Solution</div>
+      <div class="explanation-box-1">
+        <div class="math-box">
+          <span style="background:#ED8392; padding:6px 12px; border-radius:8px;">A</span>
+          <span style="background:#B7F3F0; padding:6px 12px; border-radius:8px;">C</span>
+          -
+          <span style="background:#7BC3EC; padding:6px 12px; border-radius:8px;">B</span>
+          <span style="background:#B7F3F0; padding:6px 12px; border-radius:8px;">C</span>
+          = 3
+        </div>
+        <div style="border: 2px solid #ddd;border-radius: 12px;background: #F2F2F2; padding: 10px;">
+          <div class="math-box">
+            <div>15 - 12 = 3 &nbsp;&nbsp;&nbsp;&nbsp; 15² - 12² = 9²</div>
+            <div class="pythagorean-info">➞ 9, 12, 15 is a Pythagorean triplet</div>
+          </div>
+        </div>
+        <div class="fraction-container">
+          <span>(Sec <span style="background:#b3d8f1; padding:6px 12px; border-radius:8px;">C</span> + Cot <span style="background:#f79ba2; padding:6px 12px; border-radius:8px;">A</span>) =</span>
+          <div class="fraction">
+            <div>15</div>
+            <div class="line-by"></div>
+            <div>12</div>
+          </div>
+          <span>&nbsp;+&nbsp;</span>
+          <div class="fraction">
+            <div>9</div>
+            <div class="line-by"></div>
+            <div>12</div>
+          </div>
+        </div>
+        <div class="fraction-container">
+          <span>=</span>
+          <div class="fraction">
+            <div>24</div>
+            <div class="line-by"></div>
+            <div>12</div>
+          </div>
+        </div>
+        <div class="fraction-container" style="justify-content: center;">
+          <span>=</span>
+          <div class="answer-box">2</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex;flex-direction: column;">
+      <div class="section-title">Triangle Visualization</div>
+      <div class="triangle-diagram">
+        <div class="side ab"></div>
+        <div class="side bc"></div>
+
+        <svg class="side-ac-line" width="240" height="140">
+          <polygon points="0,140 0,0 240,140" fill="rgba(173, 216, 230, 0.2)" />
+          <line x1="0" y1="0" x2="240" y2="140" stroke="#2c3e50" stroke-width="4" />
+        </svg>
+
+        <div class="label point-a">A</div>
+        <div class="label point-b">B</div>
+        <div class="label point-c">C</div>
+        <div class="dimension ab-label">9 cm</div>
+        <div class="dimension bc-label">12 cm</div>
+        <div class="dimension ac-label">15 cm</div>
+      </div>
+      <div class="formulaBoxUltimate">
+        <div class="section-title">Trigonometric Formulas</div>
+        <div class="formula-table" style="border-radius: 10px 10px 0px 0px;">
+          <div class="fraction-container">
+            Sec <span style="background:#b3d8f1; padding:6px 12px; border-radius:8px;">C</span> =
+            <div class="fraction">
+              <div>Hypotenuse</div>
+              <div class="linel-by"></div>
+              <div>Base</div>
+            </div>
+          </div>
+        </div>
+        <div class="formula-table" style="border-radius: 0px 0px 10px 10px;">
+          <div class="fraction-container">
+            Cot <span style="background:#f79ba2; padding:6px 12px; border-radius:8px;">A</span> =
+            <div class="fraction">
+              <div>Adjacent</div>
+              <div class="linel-by"></div>
+              <div>Opposite</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
